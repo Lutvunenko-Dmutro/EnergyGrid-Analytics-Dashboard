@@ -61,7 +61,6 @@ def create_robustness_curve_fig(hub_df, rand_df, nodes_to_attack_count):
     fig.update_traces(hovertemplate='Крок %{x}: <b>%{y:.2f}%</b>')
     return fig
 
-# --- ОНОВЛЕНА ФУНКЦІЯ ---
 def create_geo_voltage_map(voltage_df):
     """
     Малює інтерактивну гео-мапу, розфарбовану за напругою.
@@ -136,3 +135,4 @@ def create_hub_voltage_barchart(hubs_composition_df):
     # Сортуємо хаби на графіку від найбільшого до найменшого
     fig.update_xaxes(categoryorder='total descending')
     return fig
+
