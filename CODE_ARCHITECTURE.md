@@ -8,23 +8,23 @@
 
 ```mermaid
 graph TD;
-    subgraph "Етап 1: Запуск (Один раз)"
+    subgraph "Stage 1: Initial Launch"
         A[app_dash.py] -- "1. Request Data" --> B(analysis.py);
-        B -- "2. Calculate" --> C["Data (DataFrame, dict)"];
+        B -- "2. Calculate" --> C["DataFrames, Lists"];
         A -- "3. Pass Data" --> D(plotting_plotly.py);
-        D -- "4. Create Figures" --> E["Graphs (Plotly Figure)"];
-        A -- "5. Build GUI" --> F["Interface (HTML/Dash)"];
+        D -- "4. Create Figures" --> E["Plotly Figures"];
+        A -- "5. Build GUI" --> F["Dash Interface"];
     end
 
-    subgraph "Етап 2: Інтерактивність (Callback)"
-        G["User Map Click"] --> H["app_dash.py (Callback 1)"];
+    subgraph "Stage 2: Interactivity"
+        G["User Map Click"] --> H["Callback 1"];
         H -- "Saves ID" --> I(dcc.Store);
-        I -- "Updates" --> J["app_dash.py (Callback 2)"];
-        J -- "Updates" --> K["Input Fields (Source/Sink)"];
-        L["User Button Click"] --> M["app_dash.py (Callback 3)"];
+        I -- "Updates" --> J["Callback 2"];
+        J -- "Updates" --> K["Input Fields"];
+        L["User Button Click"] --> M["Callback 3"];
         M -- "Calls Calculation" --> B;
         B -- "Returns Result" --> M;
-        M -- "Updates" --> N["Bottleneck Table & KPIs"];
+        M -- "Updates" --> N["Table and KPIs"];
     end
 ```
 
@@ -103,6 +103,7 @@ graph TD;
   * **Результат:** Оновлює таблицю "Вузькі місця" та 3 картки KPI новими, розрахованими даними.
 
 <!-- end list -->
+
 
 
 
