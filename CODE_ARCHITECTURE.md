@@ -8,23 +8,60 @@
 
 ```mermaid
 graph TD;
-    subgraph "Stage 1: Initial Launch"
-        A[app_dash.py] -- "1. Request Data" --> B(analysis.py);
-        B -- "2. Calculate" --> C["DataFrames, Lists"];
-        A -- "3. Pass Data" --> D(plotting_plotly.py);
-        D -- "4. Create Figures" --> E["Plotly Figures"];
-        A -- "5. Build GUI" --> F["Dash Interface"];
+
+    %% --- 1. Визначення вузлів та їх форм ---
+    
+    %% Головні файли
+    A[(app_dash.py)]                 % Форма "База даних" для головного файлу
+    B{{analysis.py}}                 % Форма "Шестикутник" для логіки
+    D[/plotting_plotly.py/]          % Форма "Паралелограм" для візуалізації
+    
+    %% Результати Етапу 1
+    C["DataFrames, Lists"]           % Прямокутник для даних
+    E["Plotly Figures"]              % Прямокутник для графіків
+    F["Dash Interface (UI)"]         % Прямокутник для результату
+    
+    %% Етап 2: Інтерактивність
+    G((User Map Click))              % Коло для дії користувача
+    L((User Button Click))           % Коло для дії користувача
+    
+    H(Callback 1: store_map_click)   % Овал для Callback
+    I(dcc.Store)                     % Овал для сховища
+    J(Callback 2: update_inputs)     % Овал для Callback
+    M(Callback 3: update_analysis)   % Овал для Callback
+    
+    K[Input Fields]                  % Прямокутник для результату
+    N[Table and KPIs]                % Прямокутник для результату
+
+    %% --- 2. Стилізація вузлів (Кольори) ---
+    style A fill:#0275d8,color:#fff,stroke:#0275d8,stroke-width:2px  % Синій (Головний)
+    style B fill:#f0ad4e,color:#000,stroke:#f0ad4e,stroke-width:2px  % Жовтий (Аналіз)
+    style D fill:#5cb85c,color:#fff,stroke:#5cb85c,stroke-width:2px  % Зелений (Графіки)
+    style G fill:#d9534f,color:#fff,stroke:#d9534f,stroke-width:2px  % Червоний (Користувач)
+    style L fill:#d9534f,color:#fff,stroke:#d9534f,stroke-width:2px  % Червоний (Користувач)
+    style H fill:#5bc0de,color:#000,stroke-width:2px                 % Блакитний (Callback)
+    style J fill:#5bc0de,color:#000,stroke-width:2px                 % Блакитний (Callback)
+    style M fill:#5bc0de,color:#000,stroke-width:2px                 % Блакитний (Callback)
+    
+    %% --- 3. Зв'язки ---
+    
+    subgraph "Етап 1: Запуск (Один раз)"
+        A -- "1. Request Data" --> B;
+        B -- "2. Calculate" --> C;
+        A -- "3. Pass Data" --> D;
+        D -- "4. Create Figures" --> E;
+        A -- "5. Build GUI" --> F;
     end
 
-    subgraph "Stage 2: Interactivity"
-        G["User Map Click"] --> H["Callback 1"];
-        H -- "Saves ID" --> I(dcc.Store);
-        I -- "Updates" --> J["Callback 2"];
-        J -- "Updates" --> K["Input Fields"];
-        L["User Button Click"] --> M["Callback 3"];
+    subgraph "Етап 2: Інтерактивність (Callback)"
+        G --> H;
+        H -- "Saves ID" --> I;
+        I -- "Updates" --> J;
+        J -- "Updates" --> K;
+        L --> M;
         M -- "Calls Calculation" --> B;
         B -- "Returns Result" --> M;
-        M -- "Updates" --> N["Table and KPIs"];
+        M -- "Updates" --> N;
     end
 ```
 
@@ -103,6 +140,7 @@ graph TD;
   * **Результат:** Оновлює таблицю "Вузькі місця" та 3 картки KPI новими, розрахованими даними.
 
 <!-- end list -->
+
 
 
 
