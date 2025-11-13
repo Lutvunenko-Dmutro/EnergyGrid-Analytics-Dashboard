@@ -5,8 +5,6 @@
   <img src="https://img.shields.io/badge/Python-3.10%2B-blue?logo=python" alt="Python 3.10+">
   <img src="https://img.shields.io/badge/Framework-Dash%20%26%20Plotly-blueviolet?logo=plotly" alt="Dash & Plotly">
   <img src="https://img.shields.io/badge/Analysis-NetworkX-orange?logo=networkx" alt="NetworkX">
-  <img src="https://img.shields.io/badge/License-MIT-green" alt="License MIT">
-  <img src="https://img.shields.io/github/v/release/Lutvunenko-Dmutro/EnergyGrid-Analytics-Dashboard" alt="Release v1.0">
 </p>
 
 **EnergyGrid-Analytics-Dashboard** — це інтерактивний дашборд...
