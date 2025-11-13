@@ -94,6 +94,32 @@
 Проект використовує набір даних **[`Europa_highvoltage.graphml`](https://github.com/ComplexNetTSP/Power_grids/blob/master/Continents/Europe/graphml/Europa_highvoltage.graphml)**.
 Це публічний набір даних європейської високовольтної мережі, що базується на даних SciGrid та [OpenStreetMap](https://www.openstreetmap.org/).
 
+-----
+
+### 🏛️ Структура Проекту
+
+Проект має модульну структуру для чіткого розділення логіки, візуалізації та запуску.
+
+```
+/EnergyGrid-Analytics-Dashboard
+│
+├── 📂 screenshots/
+│   ├── image1.png
+│   ├── image2.png
+│   └── ... (всі ваші скріншоти)
+│
+├── 📜 analysis.py
+│   (Головний "двигун". Вся логіка NetworkX та Pandas.)
+│
+├── 📜 plotting_plotly.py
+│   ("Художник". Створює всі інтерактивні графіки Plotly.)
+│
+├── 📜 app_dash.py
+│   (Головний файл. Запускає додаток Dash та будує GUI.)
+
+└── 📜 Europa_highvoltage.graphml
+    (Наш набір даних.)
+```
 ---
 
 ## ⚙️ Встановлення та Запуск
