@@ -9,43 +9,39 @@
 ```mermaid
 graph TD;
 
-    %% --- 1. Визначення вузлів та їх форм ---
+    %% --- 1. Node Definitions ---
+    A[(app_dash.py)]
+    B{{analysis.py}}
+    D[/plotting_plotly.py/]
     
-    %% Головні файли
-    A[(app_dash.py)]                 % Форма "База даних" для головного файлу
-    B{{analysis.py}}                 % Форма "Шестикутник" для логіки
-    D[/plotting_plotly.py/]          % Форма "Паралелограм" для візуалізації
+    C["DataFrames, Lists"]
+    E["Plotly Figures"]
+    F["Dash Interface (UI)"]
     
-    %% Результати Етапу 1
-    C["DataFrames, Lists"]           % Прямокутник для даних
-    E["Plotly Figures"]              % Прямокутник для графіків
-    F["Dash Interface (UI)"]         % Прямокутник для результату
+    G((User Map Click))
+    L((User Button Click))
     
-    %% Етап 2: Інтерактивність
-    G((User Map Click))              % Коло для дії користувача
-    L((User Button Click))           % Коло для дії користувача
+    H(Callback_1_store_map_click)
+    I(dcc.Store)
+    J(Callback_2_update_inputs)
+    M(Callback_3_update_analysis)
     
-    H(Callback 1: store_map_click)   % Овал для Callback
-    I(dcc.Store)                     % Овал для сховища
-    J(Callback 2: update_inputs)     % Овал для Callback
-    M(Callback 3: update_analysis)   % Овал для Callback
-    
-    K[Input Fields]                  % Прямокутник для результату
-    N[Table and KPIs]                % Прямокутник для результату
+    K[Input Fields]
+    N[Table and KPIs]
 
-    %% --- 2. Стилізація вузлів (Кольори) ---
-    style A fill:#0275d8,color:#fff,stroke:#0275d8,stroke-width:2px  % Синій (Головний)
-    style B fill:#f0ad4e,color:#000,stroke:#f0ad4e,stroke-width:2px  % Жовтий (Аналіз)
-    style D fill:#5cb85c,color:#fff,stroke:#5cb85c,stroke-width:2px  % Зелений (Графіки)
-    style G fill:#d9534f,color:#fff,stroke:#d9534f,stroke-width:2px  % Червоний (Користувач)
-    style L fill:#d9534f,color:#fff,stroke:#d9534f,stroke-width:2px  % Червоний (Користувач)
-    style H fill:#5bc0de,color:#000,stroke-width:2px                 % Блакитний (Callback)
-    style J fill:#5bc0de,color:#000,stroke-width:2px                 % Блакитний (Callback)
-    style M fill:#5bc0de,color:#000,stroke-width:2px                 % Блакитний (Callback)
+    %% --- 2. Node Styling ---
+    style A fill:#0275d8,color:#fff,stroke:#0275d8,stroke-width:2px
+    style B fill:#f0ad4e,color:#000,stroke:#f0ad4e,stroke-width:2px
+    style D fill:#5cb85c,color:#fff,stroke:#5cb85c,stroke-width:2px
+    style G fill:#d9534f,color:#fff,stroke:#d9534f,stroke-width:2px
+    style L fill:#d9534f,color:#fff,stroke:#d9534f,stroke-width:2px
+    style H fill:#5bc0de,color:#000,stroke-width:2px
+    style J fill:#5bc0de,color:#000,stroke-width:2px
+    style M fill:#5bc0de,color:#000,stroke-width:2px
     
-    %% --- 3. Зв'язки ---
+    %% --- 3. Links ---
     
-    subgraph "Етап 1: Запуск (Один раз)"
+    subgraph "Stage 1: Initial Launch"
         A -- "1. Request Data" --> B;
         B -- "2. Calculate" --> C;
         A -- "3. Pass Data" --> D;
@@ -53,7 +49,7 @@ graph TD;
         A -- "5. Build GUI" --> F;
     end
 
-    subgraph "Етап 2: Інтерактивність (Callback)"
+    subgraph "Stage 2: Interactivity (Callback)"
         G --> H;
         H -- "Saves ID" --> I;
         I -- "Updates" --> J;
@@ -140,6 +136,7 @@ graph TD;
   * **Результат:** Оновлює таблицю "Вузькі місця" та 3 картки KPI новими, розрахованими даними.
 
 <!-- end list -->
+
 
 
 
