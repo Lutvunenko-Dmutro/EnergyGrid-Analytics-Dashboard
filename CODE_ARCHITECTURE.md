@@ -9,24 +9,24 @@
 ```mermaid
 graph TD;
     subgraph "Етап 1: Запуск (Один раз)"
-        A[app_dash.py] -- 1. Запит даних --> B(analysis.py);
-        B -- 2. Розрахунок --> C[Дані (DataFrame, dict)];
-        A -- 3. Передача даних --> D(plotting_plotly.py);
-        D -- 4. Створення графіків --> E[Графіки (Plotly Figure)];
-        A -- 5. Побудова GUI --> F[Інтерфейс (HTML/Dash)];
+        A[app_dash.py] -- "1. Request Data" --> B(analysis.py);
+        B -- "2. Calculate" --> C[Data (DataFrame, dict)];
+        A -- "3. Pass Data" --> D(plotting_plotly.py);
+        D -- "4. Create Figures" --> E[Graphs (Plotly Figure)];
+        A -- "5. Build GUI" --> F[Interface (HTML/Dash)];
     end
 
     subgraph "Етап 2: Інтерактивність (Callback)"
-        G[Користувач (Клік на мапі)] --> H[app_dash.py (Callback 1)];
-        H -- Зберігає ID --> I[dcc.Store];
-        I -- Оновлює --> J[app_dash.py (Callback 2)];
-        J -- Оновлює --> K[Поле вводу (Source/Sink)];
-        L[Користувач (Клік на кнопку)] --> M[app_dash.py (Callback 3)];
-        M -- Викликає розрахунок --> B;
-        B -- Повертає результат --> M;
-        M -- Оновлює --> N[Таблиця 'Вузькі місця' & KPI];
+        G[User (Map Click)] --> H[app_dash.py (Callback 1)];
+        H -- "Saves ID" --> I[dcc.Store];
+        I -- "Updates" --> J[app_dash.py (Callback 2)];
+        J -- "Updates" --> K[Input Field (Source/Sink)];
+        L[User (Button Click)] --> M[app_dash.py (Callback 3)];
+        M -- "Calls Calculation" --> B;
+        B -- "Returns Result" --> M;
+        M -- "Updates" --> N[Bottleneck Table & KPIs];
     end
-````
+```
 
 -----
 
@@ -103,3 +103,4 @@ graph TD;
   * **Результат:** Оновлює таблицю "Вузькі місця" та 3 картки KPI новими, розрахованими даними.
 
 <!-- end list -->
+
